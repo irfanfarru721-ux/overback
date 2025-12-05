@@ -1,10 +1,5 @@
 import express from "express";
-import {
-  getSubCategories,
-  getSubCategoriesByCategory,
-  createSubCategory,
-} from "../controllers/subCategoryController.js";
-
+import { getSubCategories, getSubCategoriesByCategory, createSubCategory, updateSubCategory, deleteSubCategory } from "../controllers/subCategoryController.js";
 import { adminProtect } from "../middleware/adminProtect.js";
 
 const router = express.Router();
@@ -12,5 +7,7 @@ const router = express.Router();
 router.get("/", getSubCategories);
 router.get("/category/:categoryId", getSubCategoriesByCategory);
 router.post("/", adminProtect, createSubCategory);
+router.put("/:id", adminProtect, updateSubCategory);
+router.delete("/:id", adminProtect, deleteSubCategory);
 
 export default router;

@@ -1,10 +1,5 @@
 import express from "express";
-import {
-  getVendors,
-  getVendorsByModule,
-  createVendor,
-} from "../controllers/vendorController.js";
-
+import { getVendors, getVendorsByModule, createVendor } from "../controllers/vendorController.js";
 import { adminProtect } from "../middleware/adminProtect.js";
 
 const router = express.Router();

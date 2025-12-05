@@ -1,5 +1,6 @@
 import Vendor from "../models/Vendor.js";
 
+// Get all vendors
 export const getVendors = async (req, res) => {
   try {
     const vendors = await Vendor.find().populate("moduleId");
@@ -9,6 +10,7 @@ export const getVendors = async (req, res) => {
   }
 };
 
+// Get vendors by module
 export const getVendorsByModule = async (req, res) => {
   try {
     const vendors = await Vendor.find({ moduleId: req.params.moduleId });
@@ -18,6 +20,7 @@ export const getVendorsByModule = async (req, res) => {
   }
 };
 
+// Create vendor
 export const createVendor = async (req, res) => {
   try {
     const vendor = new Vendor(req.body);
