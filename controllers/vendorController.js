@@ -30,3 +30,23 @@ export const createVendor = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+// Update vendor
+export const updateVendor = async (req, res) => {
+  try {
+    const updatedVendor = await Vendor.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(updatedVendor);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+// Delete vendor
+export const deleteVendor = async (req, res) => {
+  try {
+    await Vendor.findByIdAndDelete(req.params.id);
+    res.json({ message: "Vendor deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

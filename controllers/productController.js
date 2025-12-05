@@ -16,10 +16,7 @@ export const getProducts = async (req, res) => {
 // Get products by category
 export const getProductsByCategory = async (req, res) => {
   try {
-    const products = await Product.find({ categoryId: req.params.categoryId })
-      .populate("vendorId")
-      .populate("categoryId")
-      .populate("subCategoryId");
+    const products = await Product.find({ categoryId: req.params.categoryId });
     res.json(products);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -40,11 +37,7 @@ export const createProduct = async (req, res) => {
 // Update product
 export const updateProduct = async (req, res) => {
   try {
-    const updatedProduct = await Product.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const updatedProduct = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.json(updatedProduct);
   } catch (err) {
     res.status(500).json({ message: err.message });
